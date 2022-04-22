@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
         child: getAppBar(),
         preferredSize: Size.fromHeight(60),
       ),
+      body: getBody(),
     );
   }
 
@@ -41,6 +42,51 @@ class _HomePageState extends State<HomePage> {
                 color: black,
                 size: 25,
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget getBody() {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Feed",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: 58,
+                      height: 58,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFFFFE0DF),
+                            Color(0xFFE1F6F4),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
             ),
           ],
         ),
