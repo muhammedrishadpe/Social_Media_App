@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialmediaapp/data/user_json.dart';
 import 'package:socialmediaapp/theme/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,24 +70,59 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 30,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      width: 58,
-                      height: 58,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(0xFFFFE0DF),
-                            Color(0xFFE1F6F4),
-                          ],
+                // Story profile
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 58,
+                        height: 58,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [
+                              Color(0xFFFFE0DF),
+                              Color(0xFFE1F6F4),
+                            ],
+                          ),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.add,
+                            color: black,
+                            size: 28,
+                          ),
                         ),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Row(
+                        children: List.generate(usersList.length, (index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 30.0),
+                            child: Container(
+                              width: 58,
+                              height: 58,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image:
+                                        NetworkImage(usersList[index]['img']),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
                 )
               ],
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),
