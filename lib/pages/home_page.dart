@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialmediaapp/data/post_json.dart';
 import 'package:socialmediaapp/data/user_json.dart';
 import 'package:socialmediaapp/theme/colors.dart';
 
@@ -124,6 +125,33 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 20,
             ),
+            Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 288,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: grey.withOpacity(0.4),
+                        spreadRadius: 2,
+                        blurRadius: 15,
+                        offset: Offset(0, 1),
+                      ),
+                    ],
+                    image: DecorationImage(
+                        image: NetworkImage(postsList[0]['postImg']),
+                        fit: BoxFit.cover),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 288,
+                  decoration: BoxDecoration(),
+                )
+              ],
+            )
           ],
         ),
       ),
