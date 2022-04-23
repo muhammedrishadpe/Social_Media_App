@@ -215,23 +215,71 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(27),
                                 color: Color(0xFFE5E5E5).withOpacity(0.5),
                               ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(
+                                    Icons.heart_broken,
+                                    color: white,
+                                    size: 14,
+                                  ),
+                                  Text(
+                                    postsList[0]['like'],
+                                    style:
+                                        TextStyle(fontSize: 13, color: white),
+                                  ),
+                                ],
+                              ),
                             ),
-                            // Container(
-                            //   width: 70,
-                            //   height: 27,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(27),
-                            //     color: Color(0xFFE5E5E5).withOpacity(0.5),
-                            //   ),
-                            // ),
-                            // Container(
-                            //   width: 70,
-                            //   height: 27,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(27),
-                            //     color: Color(0xFFE5E5E5).withOpacity(0.5),
-                            //   ),
-                            // ),
+                            Container(
+                              width: 70,
+                              height: 27,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(27),
+                                color: Color(0xFFE5E5E5).withOpacity(0.5),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(
+                                    Icons.chat_bubble_outline,
+                                    color: white,
+                                    size: 14,
+                                  ),
+                                  Text(
+                                    postsList[0]['comment'],
+                                    style:
+                                        TextStyle(fontSize: 13, color: white),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: 70,
+                              height: 27,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(27),
+                                color: Color(0xFFE5E5E5).withOpacity(0.5),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(
+                                    Icons.share,
+                                    color: white,
+                                    size: 14,
+                                  ),
+                                  Text(
+                                    postsList[0]['share'],
+                                    style:
+                                        TextStyle(fontSize: 13, color: white),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         )
                       ],
