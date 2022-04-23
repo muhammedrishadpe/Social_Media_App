@@ -148,7 +148,95 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: double.infinity,
                   height: 288,
-                  decoration: BoxDecoration(),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: black.withOpacity(0.25),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 288,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage(postsList[0]['img']),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      postsList[0]['name'],
+                                      style:
+                                          TextStyle(fontSize: 15, color: white),
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Text(
+                                      postsList[0]['time'],
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color: white.withOpacity(0.8),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Icon(
+                              Icons.menu_outlined,
+                              color: white,
+                              size: 20,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              width: 70,
+                              height: 27,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(27),
+                                color: Color(0xFFE5E5E5).withOpacity(0.5),
+                              ),
+                            ),
+                            // Container(
+                            //   width: 70,
+                            //   height: 27,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(27),
+                            //     color: Color(0xFFE5E5E5).withOpacity(0.5),
+                            //   ),
+                            // ),
+                            // Container(
+                            //   width: 70,
+                            //   height: 27,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(27),
+                            //     color: Color(0xFFE5E5E5).withOpacity(0.5),
+                            //   ),
+                            // ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 )
               ],
             )
