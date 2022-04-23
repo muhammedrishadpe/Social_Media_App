@@ -125,168 +125,178 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 20,
             ),
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 288,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: grey.withOpacity(0.4),
-                        spreadRadius: 2,
-                        blurRadius: 15,
-                        offset: Offset(0, 1),
-                      ),
-                    ],
-                    image: DecorationImage(
-                        image: NetworkImage(postsList[0]['postImg']),
-                        fit: BoxFit.cover),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 288,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: black.withOpacity(0.25),
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 288,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundImage:
-                                      NetworkImage(postsList[0]['img']),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      postsList[0]['name'],
-                                      style:
-                                          TextStyle(fontSize: 15, color: white),
-                                    ),
-                                    SizedBox(
-                                      height: 3,
-                                    ),
-                                    Text(
-                                      postsList[0]['time'],
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        color: white.withOpacity(0.8),
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            Icon(
-                              Icons.menu_outlined,
-                              color: white,
-                              size: 20,
+            Column(
+              children: List.generate(postsList.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 25.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 288,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: grey.withOpacity(0.4),
+                              spreadRadius: 2,
+                              blurRadius: 15,
+                              offset: Offset(0, 1),
                             ),
                           ],
+                          image: DecorationImage(
+                              image: NetworkImage(postsList[index]['postImg']),
+                              fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              width: 70,
-                              height: 27,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(27),
-                                color: Color(0xFFE5E5E5).withOpacity(0.5),
-                              ),
-                              child: Row(
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 288,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: black.withOpacity(0.25),
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 288,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(
-                                    Icons.heart_broken,
-                                    color: white,
-                                    size: 14,
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundImage: NetworkImage(
+                                            postsList[index]['img']),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            postsList[index]['name'],
+                                            style: TextStyle(
+                                                fontSize: 15, color: white),
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          Text(
+                                            postsList[index]['time'],
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: white.withOpacity(0.8),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
                                   ),
-                                  Text(
-                                    postsList[0]['like'],
-                                    style:
-                                        TextStyle(fontSize: 13, color: white),
+                                  Icon(
+                                    Icons.menu_outlined,
+                                    color: white,
+                                    size: 20,
                                   ),
                                 ],
                               ),
-                            ),
-                            Container(
-                              width: 70,
-                              height: 27,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(27),
-                                color: Color(0xFFE5E5E5).withOpacity(0.5),
-                              ),
-                              child: Row(
+                              Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  Icon(
-                                    Icons.chat_bubble_outline,
-                                    color: white,
-                                    size: 14,
+                                  Container(
+                                    width: 70,
+                                    height: 27,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(27),
+                                      color: Color(0xFFE5E5E5).withOpacity(0.5),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Icon(
+                                          Icons.heart_broken,
+                                          color: white,
+                                          size: 14,
+                                        ),
+                                        Text(
+                                          postsList[index]['like'],
+                                          style: TextStyle(
+                                              fontSize: 13, color: white),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  Text(
-                                    postsList[0]['comment'],
-                                    style:
-                                        TextStyle(fontSize: 13, color: white),
+                                  Container(
+                                    width: 70,
+                                    height: 27,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(27),
+                                      color: Color(0xFFE5E5E5).withOpacity(0.5),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Icon(
+                                          Icons.chat_bubble_outline,
+                                          color: white,
+                                          size: 14,
+                                        ),
+                                        Text(
+                                          postsList[index]['comment'],
+                                          style: TextStyle(
+                                              fontSize: 13, color: white),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 70,
+                                    height: 27,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(27),
+                                      color: Color(0xFFE5E5E5).withOpacity(0.5),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Icon(
+                                          Icons.share,
+                                          color: white,
+                                          size: 14,
+                                        ),
+                                        Text(
+                                          postsList[index]['share'],
+                                          style: TextStyle(
+                                              fontSize: 13, color: white),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
-                              ),
-                            ),
-                            Container(
-                              width: 70,
-                              height: 27,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(27),
-                                color: Color(0xFFE5E5E5).withOpacity(0.5),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Icon(
-                                    Icons.share,
-                                    color: white,
-                                    size: 14,
-                                  ),
-                                  Text(
-                                    postsList[0]['share'],
-                                    style:
-                                        TextStyle(fontSize: 13, color: white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
+                );
+              }),
             )
           ],
         ),
