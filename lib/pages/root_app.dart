@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:socialmediaapp/pages/chat_page.dart';
 import 'package:socialmediaapp/pages/home_page.dart';
 import 'dart:math' as math;
 import '../theme/colors.dart';
@@ -27,9 +28,7 @@ class _RootAppState extends State<RootApp> {
       index: activeTap,
       children: [
         HomePage(),
-        Center(
-          child: Text("Chat"),
-        ),
+        ChatPage(),
         Center(
           child: Text("Upload"),
         ),
