@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:socialmediaapp/data/me_post_json.dart';
 import 'package:socialmediaapp/theme/colors.dart';
+import 'package:video_player/video_player.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -11,6 +13,29 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  bool isPhoto = true;
+
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.network(meVideoList[0]['videoUrl']);
+
+    _controller.addListener(() {
+      setState(() {});
+    });
+    _controller.setLooping(true);
+    _controller.initialize().then((_) => setState(() {}));
+    _controller.play();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,9 +100,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget getBody() {
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
-        child: Column(children: [
+      child: Column(
+        children: [
           SizedBox(
             height: 30,
           ),
@@ -140,15 +164,97 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(height: 30),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  isPhoto = true;
+                });
+              },
               icon: Icon(
                 Icons.photo,
                 size: 25,
+                color: isPhoto ? primary : black,
               ),
-            )
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  isPhoto = false;
+                });
+              },
+              icon: Icon(
+                Icons.play_arrow,
+                size: 30,
+                color: !isPhoto ? primary : black,
+              ),
+            ),
           ]),
-        ]),
+          SizedBox(height: 30),
+          isPhoto
+              ? Wrap(
+                  spacing: 15,
+                  runSpacing: 15,
+                  children: List.generate(mePostList.length, (index) {
+                    return Container(
+                      width: (size.width - 60) / 2,
+                      height: (size.width - 60) / 2,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: NetworkImage(mePostList[index]),
+                            fit: BoxFit.cover),
+                      ),
+                    );
+                  }),
+                )
+              : Wrap(
+                  spacing: 15,
+                  runSpacing: 15,
+                  children: List.generate(mePostList.length, (index) {
+                    return GestureDetector(
+                      onTap: () =>
+                          playVideo(context, meVideoList[index]['videoUrl']),
+                      child: Container(
+                        width: (size.width - 60) / 2,
+                        height: (size.width - 60) / 2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: NetworkImage(meVideoList[index]['img']),
+                              fit: BoxFit.cover),
+                        ),
+                        child: Center(
+                            child: Icon(
+                          Icons.play_circle,
+                          size: 40,
+                          color: white,
+                        )),
+                      ),
+                    );
+                  }),
+                ),
+        ],
       ),
     );
+  }
+
+  playVideo(BuildContext context, videoUrl) {
+    _controller = VideoPlayerController.network(videoUrl);
+
+    _controller.addListener(() {
+      setState(() {});
+    });
+    _controller.setLooping(true);
+    _controller.initialize().then((_) => setState(() {}));
+    _controller.play();
+
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              contentPadding: EdgeInsets.zero,
+              content: AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
+              ),
+            ));
   }
 }
