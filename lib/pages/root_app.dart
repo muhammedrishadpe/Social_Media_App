@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import "package:flutter/material.dart";
 import 'package:socialmediaapp/pages/chat_page.dart';
 import 'package:socialmediaapp/pages/home_page.dart';
+import 'package:socialmediaapp/pages/profile_page.dart';
+import 'package:socialmediaapp/pages/saved_page.dart';
 import 'dart:math' as math;
 import '../theme/colors.dart';
 
@@ -26,18 +30,15 @@ class _RootAppState extends State<RootApp> {
   Widget getBody() {
     return IndexedStack(
       index: activeTap,
+      // ignore: prefer_const_literals_to_create_immutables
       children: [
         HomePage(),
         ChatPage(),
         Center(
           child: Text("Upload"),
         ),
-        Center(
-          child: Text("Save"),
-        ),
-        Center(
-          child: Text("Profile"),
-        ),
+        SavedPage(),
+        ProfilePage(),
       ],
     );
   }

@@ -91,58 +91,75 @@ class _ChatPageState extends State<ChatPage> {
             SizedBox(
               height: 40,
             ),
-            Container(
-              width: double.infinity,
-              height: 100,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      color: grey.withOpacity(0.15),
-                      spreadRadius: 2,
-                      blurRadius: 15,
-                      offset: Offset(0, 1))
-                ],
-                color: white.withOpacity(0.6),
-                borderRadius: BorderRadius.circular(33),
-              ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    width: 65,
-                    height: 65,
+            Column(
+              children: List.generate(
+                usersList.length,
+                (index) => Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Container(
+                    width: double.infinity,
+                    height: 100,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(28),
-                        border: Border.all(color: black)),
-                    child: Center(
-                      child: Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            image: DecorationImage(
-                                image: NetworkImage(usersList[0]['img']),
-                                fit: BoxFit.cover)),
-                      ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: grey.withOpacity(0.15),
+                            spreadRadius: 2,
+                            blurRadius: 15,
+                            offset: Offset(0, 1))
+                      ],
+                      color: white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(33),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Container(
+                          width: 65,
+                          height: 65,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(28),
+                              border: Border.all(color: black)),
+                          child: Center(
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  image: DecorationImage(
+                                      image:
+                                          NetworkImage(usersList[index]['img']),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(usersList[index]['name']),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                usersList[index]['message'],
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: black.withOpacity(0.5),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                  SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(usersList[0]['name']),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(usersList[0]['message'])
-                    ],
-                  )
-                ],
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),
